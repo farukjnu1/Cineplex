@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Cineplex.Models.Hall>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HallName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Row)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Column)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HallName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Row)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Column)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.HallId">Edit</a> |
+                <a asp-action="EditSit" asp-route-id="@item.HallId">Seats</a> |
+                <a asp-action="EditPrice" asp-route-id="@item.HallId">Prices</a> |
+                <a asp-action="Delete" asp-route-id="@item.HallId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

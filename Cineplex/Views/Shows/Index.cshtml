@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Cineplex.Models.Show>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ShowName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShowStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShowEnd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hall)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movie)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShowName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShowStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShowEnd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hall.HallId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Movie.MovieId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ShowId">Edit</a> |
+                <a asp-action="EditTicket" asp-route-id="@item.ShowId">Tickets</a> |
+                <a asp-action="Delete" asp-route-id="@item.ShowId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
